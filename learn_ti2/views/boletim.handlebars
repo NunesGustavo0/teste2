@@ -1,0 +1,76 @@
+<nav class="top-nav">
+    <ul>
+        <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/disciplina" class="{{#ifEq currentPath '/disciplina'}}active{{/ifEq}}"><i class="fas fa-book"></i> Disciplinas</a></li>
+        <li><a href="/agenda" class="{{#ifEq currentPath '/agenda'}}active{{/ifEq}}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+        <li><a href="/boletim" class="{{#ifEq currentPath '/boletim'}}active{{/ifEq}}"><i class="fas fa-chart-bar"></i> Boletim</a></li>
+    </ul>
+</nav>
+
+<main class="grades-container">
+    <h1>Boletim</h1>
+
+    <select id="semesterSelect">
+        <option value="2024-1">1° Semestre 2024</option>
+        <option value="2024-2">2° Semestre 2024</option>
+        <option value="2025-1">1° Semestre 2025</option>
+        <option value="2025-2">2° Semestre 2025</option>
+    </select>
+
+    <table class="grades-table">
+        <thead>
+            <tr>
+                <th>Disciplina</th>
+                <th>N1</th>
+                <th>N2</th>
+                <th>N3</th>
+                <th>Média</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="gradesTableBody">
+            {{!-- Dados serão preenchidos pelo JavaScript --}}
+            <tr id="noGradesMessage" style="display: none;">
+                <td colspan="7" style="text-align: center; color: #666; padding: 20px;">Nenhuma nota lançada para este semestre.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="addGradeBtn" class="add-grade-btn"> {{!-- Adicionei uma classe para estilização --}}
+        <i class="fas fa-plus"></i> Adicionar Nota
+    </button>
+</main>
+
+<div id="gradeModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close-modal">&times;</span> 
+        <h2 id="modalTitle">Adicionar Nota</h2>
+        <form id="gradeForm" class="form-grade"> 
+            <input type="hidden" id="editBoletimId"> 
+            <div>
+                <label for="gradeDiscipline">Disciplina:</label>
+                <select id="gradeDiscipline" required>
+                    <option value="">Selecione...</option>
+                </select>
+            </div>
+            <div>
+                <label for="gradeN1">Nota N1:</label>
+                <input type="number" id="gradeN1" min="0" max="10" step="0.1" required>
+            </div>
+            <div>
+                <label for="gradeN2">Nota N2:</label>
+                <input type="number" id="gradeN2" min="0" max="10" step="0.1" required>
+            </div>
+            <div>
+                <label for="gradeN3">Nota N3:</label>
+                <input type="number" id="gradeN3" min="0" max="10" step="0.1" required>
+            </div>
+            <button type="submit" class="submit-button"> {{!-- Nova classe mais genérica para botão de submit --}}
+                Salvar Notas
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/boletim.js"></script>

@@ -1,0 +1,29 @@
+<div class="auth-page"> {{!-- Adicionei a classe auth-page para aplicar o estilo de fundo --}}
+    <div class="auth-container">
+        <img src="/images/logo.jpg" alt="Logo Learn_ti" class="logo-auth">
+
+        {{!-- Sistema de Notificações --}}
+        {{#if notification}}
+            <div class="notification notification-{{notification.type}}" id="notification">
+                <div class="notification-content">
+                    <strong class="notification-title">{{notification.title}}</strong>
+                    <p class="notification-message">{{notification.message}}</p>
+                    <button class="notification-close" onclick="closeNotification()">&times;</button>
+                </div>
+            </div>
+        {{/if}}
+
+        <form action="/login" method="POST" class="auth-form"> {{!-- Apliquei a classe auth-form --}}
+            <input type="text" placeholder="Usuário" id="login-user" required name="usuario" autocomplete="username">
+            <input type="password" placeholder="Senha" id="login-password" required name="senha" autocomplete="current-password">
+            <button type="submit">Entrar</button>
+            <div class="auth-footer">
+                <a href="#">Esqueceu a senha?</a><br>
+                <a href="/cad">Não tem uma conta?</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/notification.js"></script> {{!-- Link para o novo arquivo JS de notificações --}}
+<script src="/js/auth.js"></script> {{!-- Link para o novo arquivo JS de autenticação (validação frontend) --}}

@@ -1,0 +1,77 @@
+<nav class="top-nav">
+        <ul>
+            {{!-- CORREÇÃO AQUI: Mudando .html para as rotas do Express --}}
+            <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/disciplinas" class="{{#ifEq currentPath '/disciplinas'}}active{{/ifEq}}"><i class="fas fa-book"></i> Disciplinas</a></li>
+            <li><a href="/agenda"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+            <li><a href="/boletim"><i class="fas fa-chart-bar"></i> Boletim</a></li>
+        </ul>
+</nav>
+
+<div class="container">
+    <h1>Minhas Disciplinas</h1>
+
+    {{!-- CORREÇÃO AQUI: A classe agora é "disciplinas-grid" (no singular) --}}
+    <div class="disciplinas-grid">
+        {{!-- Aqui, cada card de disciplina apontará para a rota dinâmica --}}
+        {{!-- Os slugs devem corresponder EXATAMENTE aos slugs que você inseriu no seu banco de dados --}}
+
+        {{!-- CORREÇÃO AQUI: A classe agora é "disciplina-card" (no singular) --}}
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/algoritmos-e-programacao'">
+            <div class="discipline-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <h2>Algoritmos e Técnicas de Programação</h2>
+            <p>Conceitos fundamentais de lógica e programação.</p>
+        </div>
+
+        {{!-- Repita para os outros cards, garantindo que a classe seja "disciplina-card" --}}
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/ciencia-tecnologia-sociedade'">
+            <div class="discipline-icon">
+                <i class="fas fa-lightbulb"></i> {{!-- Exemplo de ícone --}}
+            </div>
+            <h2>Ciência, Tecnologia e Sociedade</h2>
+            <p>Impactos sociais da ciência e tecnologia.</p>
+        </div>
+
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/fundamentos-da-computacao'">
+            <div class="discipline-icon">
+                <i class="fas fa-desktop"></i>
+            </div>
+            <h2>Fundamentos da Computação</h2>
+            <p>Introdução aos princípios básicos da computação.</p>
+        </div>
+
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/ingles-aplicado-a-computacao'">
+            <div class="discipline-icon">
+                <i class="fas fa-language"></i>
+            </div>
+            <h2>Inglês Aplicado à Computação</h2>
+            <p>Terminologia e comunicação em inglês na área de TI.</p>
+        </div>
+
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/logica-matematica'">
+            <div class="discipline-icon">
+                <i class="fas fa-square-root-alt"></i>
+            </div>
+            <h2>Lógica Matemática</h2>
+            <p>Estudo de raciocínio lógico e estruturas matemáticas.</p>
+        </div>
+
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/matematica-aplicada-a-computacao'">
+            <div class="discipline-icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <h2>Matemática Aplicada à Computação</h2>
+            <p>Aplicação de conceitos matemáticos em problemas computacionais.</p>
+        </div>
+
+        <div class="disciplina-card" onclick="window.location.href='/disciplinas/organizacao-de-computadores'">
+            <div class="discipline-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <h2>Organização de Computadores</h2>
+            <p>Arquitetura e funcionamento interno dos computadores.</p>
+        </div>
+    </div>
+</div>

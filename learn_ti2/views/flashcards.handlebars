@@ -1,0 +1,52 @@
+{{!-- views/flashcards.handlebars --}}
+
+<nav class="top-nav">
+    <ul>
+        <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/disciplinas" class="{{#ifEq currentPath '/disciplinas'}}active{{/ifEq}}"><i class="fas fa-book"></i> Disciplinas</a></li>
+        <li><a href="/agenda"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+        <li><a href="/boletim"><i class="fas fa-chart-bar"></i> Boletim</a></li>
+    </ul>
+</nav>
+
+<input type="hidden" id="disciplineActualId" value="{{discipline.disccodigo}}">
+
+<div class="container">
+    <h1>Flashcards de {{discipline.discnome}}</h1>
+    
+    <div class="flashcards-container">
+        <div id="flashcard-display">
+            {{!-- Conteúdo dinâmico do flashcard --}}
+        </div>
+        
+        <div class="flashcard-form">
+            <h2 style="color: #001542; text-align: center; margin-bottom: 20px;">Criar Novo Flashcard</h2>
+            <form id="newFlashcardForm">
+                <div class="form-group">
+                    <label for="flashcardQuestion">Pergunta:</label>
+                    <textarea id="flashcardQuestion" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="flashcardAnswer">Resposta:</label>
+                    <textarea id="flashcardAnswer" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-plus"></i> Criar Flashcard
+                </button>
+            </form>
+        </div>
+        
+        <div class="flashcard-controls">
+            <button class="control-btn" id="prevFlashcardBtn">
+                <i class="fas fa-chevron-left"></i> Anterior
+            </button>
+            <span id="flashcardCounter" style="display: flex; align-items: center;">0/0</span>
+            <button class="control-btn" id="nextFlashcardBtn">
+                Próximo <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/flashcards.js"></script>
+{{!-- notification.js e userMenu.js já devem estar no main.handlebars --}}

@@ -1,0 +1,30 @@
+{{!-- views/disciplinePage.handlebars --}}
+{{!-- Este template renderiza a página de detalhes de QUALQUER disciplina --}}
+
+{{!-- Conteúdo Principal - Página da Disciplina --}}
+<div class="container">
+    <h1>{{discipline.discnome}}</h1> {{!-- Título dinâmico da disciplina --}}
+    {{!-- A descrição da disciplina (discdesc) é opcional, mas útil se você a tiver no DB --}}
+    <p>{{discipline.discdesc}}</p> 
+
+    <div class="options-grid">
+        <div class="option-card" onclick="window.location.href='/biblioteca/{{discipline.slug}}'">
+            <div class="option-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h2>Biblioteca</h2>
+            <p>Material de estudo e referências</p>
+        </div>
+
+        <div class="option-card" onclick="window.location.href='/flashcards/{{discipline.slug}}'">
+            <div class="option-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <h2>Flashcards</h2>
+            <p>Cartões de revisão de conceitos</p>
+        </div>
+    </div>
+</div>
+
+{{!-- Scripts específicos desta página. userMenu.js e notification.js já estão no main.handlebars --}}
+<script src="/js/disciplinePage.js"></script>
