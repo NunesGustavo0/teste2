@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn_ti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="/util/logo.jpg" alt="Logo da Instituição" class="logo">
+        </div>
+
+        <div class="user-menu">
+            <div class="user-avatar" id="userAvatar">
+                <i class="fas fa-user-circle"></i>
+                <div class="user-dropdown" id="userDropdown">
+                    {{!-- REMOVIDO: <span>{{username}}</span> --}}
+                    <a href="#" onclick="logout()">Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        <nav class="top-nav">
+            <ul>
+                {{!-- CORREÇÃO AQUI: Mudando .html para as rotas do Express --}}
+                <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/disciplinas" class="{{#ifEq currentPath '/disciplinas'}}active{{/ifEq}}"><i class="fas fa-book"></i> Disciplinas</a></li>
+                <li><a href="/agenda" class="{{#ifEq currentPath '/agenda'}}active{{/ifEq}}"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+                <li><a href="/boletim" class="{{#ifEq currentPath '/boletim'}}active{{/ifEq}}"><i class="fas fa-chart-bar"></i> Boletim</a></li>
+            </ul>
+        </nav>
+
+    {{{body}}}
+
+    <script src="/js/userMenu.js"></script>
+    <script src="/js/notification.js"></script>
+
+</body>
+</html>

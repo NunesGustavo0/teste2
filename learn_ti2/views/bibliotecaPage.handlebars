@@ -1,0 +1,108 @@
+<style>
+        /* ESTILOS ESPECÍFICOS PARA ESTA PÁGINA, SE NECESSÁRIO */
+        /* Copie os estilos relevantes do seu template estático aqui, se não estiverem no style.css */
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #001542;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #0a74da;
+            border-bottom: 2px solid #0a74da;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .reference-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .reference-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .reference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .reference-title {
+            color: #001542;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .reference-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #0a74da;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .reference-link:hover {
+            background-color: #001542;
+        }
+        .reference-link i {
+            margin-left: 5px;
+        }
+        @media (max-width: 768px) {
+            .reference-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{{!-- Cabeçalho e navegação virão do main.handlebars --}}
+
+    <div class="container">
+        <h1>Material de Referência - {{discipline.discnome}}</h1>
+        
+        {{#if references}}
+            {{!-- Exemplo de loop para Livros --}}
+            <h2 class="section-title">
+                <i class="fas fa-book"></i> Livros e artigos Recomendados
+            </h2>
+            <div class="reference-list">
+                {{#each references}}
+                    {{#ifEq tipo_documento 'referencia'}}
+                        <div class="reference-card">
+                            <div class="reference-title">{{doctitulo}}</div>
+                            <p>{{docdesc}}</p>
+                            <a href="{{doclink}}" class="reference-link" target="_blank">
+                                Acessar Livro <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    {{/ifEq}}
+                {{/each}}
+            </div>
+
+            {{!-- Adicione mais seções (videos, tutoriais) conforme os `tipo_documento` que você tiver no DB --}}
+            {{#each references}}
+                {{#ifEq tipo_documento 'video'}}
+                    <h2 class="section-title">
+                        <i class="fas fa-video"></i> Vídeos
+                    </h2>
+                    <div class="reference-card">
+                        <div class="reference-title">{{doctitulo}}</div>
+                        <p>{{docdesc}}</p>
+                        <a href="{{doclink}}" class="reference-link" target="_blank">
+                            Assistir Vídeo <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                {{/ifEq}}
+            {{/each}}
+
+        {{else}}
+            <p>Nenhum material de referência encontrado para esta disciplina.</p>
+        {{/if}}
+    </div>
